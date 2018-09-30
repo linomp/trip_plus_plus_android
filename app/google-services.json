@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "681603369725",
+    "firebase_url": "https://tripplusplus.firebaseio.com",
+    "project_id": "tripplusplus",
+    "storage_bucket": "tripplusplus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681603369725:android:a4361e8a04d0d1ac",
+        "android_client_info": {
+          "package_name": "systems.mp.tripplusplus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "681603369725-7avdgkus6817mqak8ee7jodnfevsd9ki.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "systems.mp.tripplusplus",
+            "certificate_hash": "b30e140c9a3e5c7c23c049fec4af3811669d14a9"
+          }
+        },
+        {
+          "client_id": "681603369725-pepf8c6mn3q4nh09ia3qppvhnnjphbpq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB67B3-LJ3xgSFt9KgRQ0uOi9HiiYUvtKU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "681603369725-pepf8c6mn3q4nh09ia3qppvhnnjphbpq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
