@@ -39,7 +39,6 @@ public class NewQueryActivity extends AppCompatActivity {
             //i.putExtra("DATE_STRING", sdf.format(new Date()) );
             startActivity(i);
         });
-
     }
 
     private void showDatePickerDialog() {
@@ -47,7 +46,9 @@ public class NewQueryActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 // +1 because january is zero
-                final String selectedDate = day + "/" + (month+1) + "/" + year;
+                //final String selectedDate = day + "/" + (month+1) + "/" + year;
+                final String selectedDate = (day < 10 ? "0" : "") + day +
+                        "/" + (month+1 < 10 ? "0" : "") + (month+1) + "/" + year;
                 travelDatePicker.setText(selectedDate);
             }
         });

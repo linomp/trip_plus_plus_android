@@ -49,7 +49,7 @@ class Ticket {
     }
 
     public String getDepartureDateString() {
-        SimpleDateFormat sdf=new SimpleDateFormat("dd/M/YYYY");
+        SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/YYYY");
         String dateString = sdf.format(mDeparture);
         return dateString;
     }

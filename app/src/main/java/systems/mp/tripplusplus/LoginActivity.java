@@ -2,9 +2,9 @@ package systems.mp.tripplusplus;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+//import android.util.Log;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.TextView;
@@ -48,7 +48,7 @@ public class LoginActivity extends Activity {
                         public void onComplete(Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
-                                Log.d(TAG, "signInWithEmail:success");
+                                //Log.d(TAG, "signInWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 Intent i = new Intent(LoginActivity.this, NewQueryActivity.class);
                                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -56,7 +56,7 @@ public class LoginActivity extends Activity {
                                 //updateUI(user);
                             } else {
                                 // If sign in fails, display a message to the user.
-                                Log.w(TAG, "signInWithEmail:failure", task.getException());
+                                //Log.w(TAG, "signInWithEmail:failure", task.getException());
                                 Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_error_msg),
                                         Toast.LENGTH_SHORT).show();
                                 //updateUI(null);
