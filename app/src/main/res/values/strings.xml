@@ -35,4 +35,8 @@
     <string name="duplicate_user_error_msg">Error: Este usuario ya se ha registrado antes.</string>
     <string name="login_error_msg">Error de autenticación.</string>
     <string name="loading_msg">Espere...</string>
+    <string name="id_field_name">Cédula</string>
+    <string name="lastname_field_name">Apellido</string>
+    <string name="name_field_name">Nombre</string>
+    <string name="payment_error_msg">Ocurrió un error al procesar su pago</string>
 </resources>

@@ -33,18 +33,24 @@
                 tools:text="Reina del Camino" />
 
             <TextView
-                android:id="@+id/company_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="3dp"
-                tools:text="4/5" />
-
-            <TextView
                 android:id="@+id/ticket_id_text_view"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:visibility="invisible"
                 tools:visibility="gone" />
+
+            <TextView
+                android:id="@+id/company_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                tools:text="" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         </TableRow>
 
@@ -59,21 +65,20 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:padding="3dp"
-                tools:text="29/09/2018 20:00" />
+                tools:text="Fecha de salida: 29/09/2018" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" >
 
             <TextView
-                android:id="@+id/services_text_view"
+                android:id="@+id/departure_hour_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:padding="3dp"
-                tools:text="Wi-Fi, SS.HH." />
-
+                android:text="TextView"
+                tools:text="Hora de salida: 20:00" />
         </TableRow>
 
         <TableRow

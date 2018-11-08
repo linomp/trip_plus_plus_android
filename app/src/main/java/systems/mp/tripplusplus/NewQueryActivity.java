@@ -16,7 +16,7 @@ import java.util.Date;
 
 public class NewQueryActivity extends AppCompatActivity {
 
-    Button searchButton;
+    Button searchButton, logOutBtn;
     TextView originTextView, destinationTextView;
     EditText travelDatePicker;
     @Override
@@ -24,6 +24,7 @@ public class NewQueryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_query);
 
+        logOutBtn = (Button) findViewById(R.id.log_out_btn);
         searchButton = (Button) findViewById(R.id.searchButton);
         originTextView = (TextView) findViewById(R.id.origin_text_view);
         destinationTextView = (TextView) findViewById(R.id.destination_text_view);
@@ -39,6 +40,13 @@ public class NewQueryActivity extends AppCompatActivity {
             //i.putExtra("DATE_STRING", sdf.format(new Date()) );
             startActivity(i);
         });
+
+        logOutBtn.setOnClickListener(v->{
+            Intent i = new Intent(this, FirstScreen.class);
+            i.putExtra("REQUESTED_LOGOUT", true);
+            startActivity(i);
+        });
+
     }
 
     private void showDatePickerDialog() {
@@ -47,8 +55,10 @@ public class NewQueryActivity extends AppCompatActivity {
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 // +1 because january is zero
                 //final String selectedDate = day + "/" + (month+1) + "/" + year;
-                final String selectedDate = (day < 10 ? "0" : "") + day +
-                        "/" + (month+1 < 10 ? "0" : "") + (month+1) + "/" + year;
+                //final String selectedDate = (day < 10 ? "0" : "") + day +
+                //        "/" + (month+1 < 10 ? "0" : "") + (month+1) + "/" + year;
+                final String selectedDate = year + "-" + (month+1 < 10 ? "0" : "") + (month+1) +
+                        "-"+ (day < 10 ? "0" : "") + day ;
                 travelDatePicker.setText(selectedDate);
             }
         });

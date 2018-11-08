@@ -12,10 +12,12 @@ public class TicketDataMocker {
 
     public TicketDataMocker(){
         allTheTickets = new ArrayList<>();
-        allTheTickets.add( new Ticket("00","Reina del Camino", 4, 10.00, new Date(),"TV, WiFi, WC", "quito", "manta", R.drawable.rdc_logo) );
-        allTheTickets.add( new Ticket("01","TransEsmeraldas", 4, 6.00, new Date(),"TV, WC", "quito", "esmeraldas", R.drawable.trans_esme_logo) );
-        allTheTickets.add( new Ticket("02","Flota Imbabura", 3, 10.00, new Date(),"TV", "quito", "manta", R.drawable.flota_logo) );
-        allTheTickets.add( new Ticket("03","Reina del Camino", 4, 15.00, new Date(),"TV, WiFi, WC", "quito", "guayaquil", R.drawable.rdc_logo) );
+       /* allTheTickets = new ArrayList<>();
+        allTheTickets.add( new Ticket("00","Reina del Camino", 4, 10.00, new Date(),"00:00","TV, WiFi, WC", "quito", "manta", 30, R.drawable.rdc_logo, "000") );
+        allTheTickets.add( new Ticket("01","TransEsmeraldas", 4, 6.00, new Date(),"00:00","TV, WC", "quito", "esmeraldas", 30, R.drawable.trans_esme_logo, "000") );
+        allTheTickets.add( new Ticket("02","Flota Imbabura", 3, 10.00, new Date(),"00:00","TV", "quito", "manta", 30, R.drawable.flota_logo, "000") );
+        allTheTickets.add( new Ticket("03","Reina del Camino", 4, 15.00, new Date(),"00:00","TV, WiFi, WC", "quito", "guayaquil", 30, R.drawable.rdc_logo, "000") );
+        */
     }
 
     public Ticket getTicketById(String id){

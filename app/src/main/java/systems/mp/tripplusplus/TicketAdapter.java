@@ -37,14 +37,15 @@ public class TicketAdapter extends ArrayAdapter<Ticket> {
         companyTextView.setText(currentTicket.getCompanyName());
 
         TextView companyRatingTextView = (TextView) listItemView.findViewById(R.id.company_rating);
-        companyRatingTextView.setText(  String.valueOf(currentTicket.getCompanyRating()) + "/5" );
+        //companyRatingTextView.setText(  "Servicio:" + String.valueOf(currentTicket.getCompanyRating()) + "/5" );
+        companyRatingTextView.setText( "" );
         //companyRatingTextView.setText("4/5");
 
-        TextView servicesTextView = (TextView) listItemView.findViewById(R.id.services_text_view);
-        servicesTextView.setText(currentTicket.getServices());
-
         TextView departureTextView = (TextView) listItemView.findViewById(R.id.departure_text_view);
-        departureTextView.setText(currentTicket.getDepartureDateTimeString());
+        departureTextView.setText("Fecha de salida: " + currentTicket.getDepartureDateString());
+
+        TextView departureHourTextView = (TextView) listItemView.findViewById(R.id.departure_hour_text_view);
+        departureHourTextView.setText("Hora de salida: " + currentTicket.getDepartureTimeString());
 
         TextView ticketPriceTextView = (TextView) listItemView.findViewById(R.id.ticket_price_text_view);
         ticketPriceTextView.setText( "$ "+ String.valueOf(currentTicket.getPrice()) );
