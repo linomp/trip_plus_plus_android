@@ -18,7 +18,7 @@
     <string name="travel_date_field_title">Fecha:</string>
     <string name="results_count_msg"> coincidencia(s)</string>
     <string name="purchase_btn_text"> Finalizar</string>
-    <string name="pick_seat_msg"> Elegir Asiento:</string>
+    <string name="pick_seat_msg"> Elegir Asiento(s)</string>
     <string name="departure_field_title"> Salida:</string>
     <string name="services_field_title"> Servicios:</string>
     <string name="price_field_title"> Precio:</string>

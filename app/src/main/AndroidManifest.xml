@@ -6,9 +6,9 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:launchMode="singleTask"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:launchMode="singleTask"
         android:theme="@style/AppTheme">
         <activity android:name=".FirstScreen">
             <intent-filter>
@@ -27,7 +27,8 @@
         <activity android:name=".NewQueryActivity" />
         <activity android:name=".QueryResultsActivity" />
         <activity android:name=".SeeTicketDetailsActivity" />
-        <activity android:name=".CheckoutActivity"></activity>
+        <activity android:name=".CheckoutActivity" />
+        <activity android:name=".SeatPickerActivity"></activity>
     </application>
 
 </manifest>

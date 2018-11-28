@@ -6,14 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
-
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,15 +17,13 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SeeTicketDetailsActivity extends AppCompatActivity {
+public class SeeTicketDetailsActivity extends AppCompatActivity{
 
     TextView companyNameTextView, price_detail_view, services_detail_view,
             route_details_concat, departure_detail_view, current_purchase_text_view;
-    Button addToCartBtn, checkoutBtn;
-    Spinner seatsDropdown;
+    Button checkoutBtn, pickSeatsBtn;
     ArrayList<Integer> availableSeats;
     ArrayList<Integer> selectedSeats;
-    Integer currentSelectedSeat;
     Ticket mSelectedTicket;
 
     @Override
@@ -59,16 +52,6 @@ public class SeeTicketDetailsActivity extends AppCompatActivity {
         route_details_concat.setText( getResources().getString(R.string.loading_msg) );
         departure_detail_view.setText( getResources().getString(R.string.loading_msg) );
 
-
-        // TODO: implement bus layout visual seat-picking mechanism (in a separate fragment just like datePicker)
-        // display list of available seats
-        seatsDropdown = findViewById(R.id.spinner1);
-        //updateSeatDropdown(availableSeats);
-
-        //TicketDataMocker dataSource = new TicketDataMocker();
-        //String idToLookup = getIntent().getExtras().getString("TICKET_ID");
-        //Ticket selectedTicket = dataSource.getTicketById( idToLookup );
-
         String idToLookup = getIntent().getExtras().getString("TICKET_ID");
         mSelectedTicket = new Ticket();
 
@@ -82,31 +65,23 @@ public class SeeTicketDetailsActivity extends AppCompatActivity {
                     Log.d("FB_TEST", mSelectedTicket.toString());
                     populateTextViews(mSelectedTicket);
                     populateBusData(mSelectedTicket);
-                    //updateAvailableSeats(mSelectedTicket);
+                    updateAvailableSeats(mSelectedTicket);
                 }
             });
 
-
-        addToCartBtn = (Button) findViewById(R.id.addToCartBtn);
+        pickSeatsBtn = (Button) findViewById(R.id.pickSeatsBtn);
         checkoutBtn = (Button) findViewById(R.id.checkoutBtn);
-        addToCartBtn.setOnClickListener(e->{
-            if(currentSelectedSeat != null) {
-                selectedSeats.add(currentSelectedSeat);
-                checkoutBtn.setEnabled(true);
-                checkoutBtn.setBackgroundResource(R.drawable.black_bg);
-                availableSeats.remove(currentSelectedSeat);
-                //updateSeatDropdown(availableSeats);
-                current_purchase_text_view.setVisibility(View.VISIBLE);
-                current_purchase_text_view.setText(String.valueOf(selectedSeats.size())
-                        + " " + getResources().getString(R.string.current_purchase_msg));
-                currentSelectedSeat = null;
-            }
-        });
-
         checkoutBtn.setOnClickListener(e->{
             Intent i = new Intent(this, CheckoutActivity.class);
             i.putIntegerArrayListExtra("SELECTED_SEATS", selectedSeats);
             i.putExtra("TICKET_ID", mSelectedTicket.getId());
+            startActivity(i);
+        });
+        //pickSeatsBtn.setOnClickListener(e -> showSeatPickerDialog());
+        pickSeatsBtn.setOnClickListener(v->{
+            Intent i = new Intent(this, SeatPickerActivity.class);
+            i.putExtra("availableSeats", availableSeats);
+            i.putExtra("TICKET_ID", getIntent().getExtras().getString("TICKET_ID"));
             startActivity(i);
         });
     }
@@ -128,7 +103,6 @@ public class SeeTicketDetailsActivity extends AppCompatActivity {
                     doc.get("soldSeats"),
                     R.drawable.logo_v_1,
                     doc.getString("busPlate"));
-            //Log.d("FB_TEST", doc.getString("availableSeats"));
             Log.d("FB_TEST", doc.get("soldSeats").getClass().toString());
         }
         return ticketFromDoc;
@@ -181,27 +155,26 @@ public class SeeTicketDetailsActivity extends AppCompatActivity {
     }
 
     private void updateAvailableSeats(Ticket selectedTicket){
-
         availableSeats = (ArrayList<Integer>) selectedTicket.getAvailableSeats().clone();
 
-        updateSeatDropdown(availableSeats);
+        ArrayList<Integer> seats = getIntent().getExtras().getIntegerArrayList("selectedSeats");
+        if(seats != null && seats.size() > 0) {
+            for(Integer i : seats) {
+                // set picked seats
+                selectedSeats.add(i+1);
+                // update available seats
+                availableSeats.remove(new Integer(i + 1));
+            }
+            Log.d("SELECTED", selectedSeats.toString());
+            checkoutBtn.setEnabled(true);
+            checkoutBtn.setBackgroundResource(R.drawable.black_bg);
+            current_purchase_text_view.setVisibility(View.VISIBLE);
+            current_purchase_text_view.setText(String.valueOf(selectedSeats.size())
+                    + " " + getResources().getString(R.string.current_purchase_msg));
+        }
+
     }
 
-    private void updateSeatDropdown(ArrayList<Integer> items){
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        seatsDropdown.setAdapter(adapter);
-        seatsDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                currentSelectedSeat = (Integer) adapterView.getItemAtPosition(i);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                currentSelectedSeat = null;
-            }
-        });
-    }
 
     private void showBusCompanyRating(Ticket ticket){
         TextView[] stars = new TextView[]{
