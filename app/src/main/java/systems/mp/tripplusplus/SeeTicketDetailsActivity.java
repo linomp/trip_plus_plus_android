@@ -82,11 +82,9 @@ public class SeeTicketDetailsActivity extends AppCompatActivity {
                     Log.d("FB_TEST", mSelectedTicket.toString());
                     populateTextViews(mSelectedTicket);
                     populateBusData(mSelectedTicket);
-                    updateAvailableSeats(mSelectedTicket);
+                    //updateAvailableSeats(mSelectedTicket);
                 }
             });
-
-
 
 
         addToCartBtn = (Button) findViewById(R.id.addToCartBtn);
@@ -97,7 +95,7 @@ public class SeeTicketDetailsActivity extends AppCompatActivity {
                 checkoutBtn.setEnabled(true);
                 checkoutBtn.setBackgroundResource(R.drawable.black_bg);
                 availableSeats.remove(currentSelectedSeat);
-                updateSeatDropdown(availableSeats);
+                //updateSeatDropdown(availableSeats);
                 current_purchase_text_view.setVisibility(View.VISIBLE);
                 current_purchase_text_view.setText(String.valueOf(selectedSeats.size())
                         + " " + getResources().getString(R.string.current_purchase_msg));

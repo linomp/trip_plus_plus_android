@@ -153,6 +153,10 @@ public class CheckoutActivity extends Activity {
             Log.d("UPDFB", e.toString());
         }
         transaction.put("seats", selectedSeats);
+        transaction.put("origin", mSelectedTicket.getOrigin());
+        transaction.put("destination", mSelectedTicket.getDestination());
+        transaction.put("departure", mSelectedTicket.getDepartureDateTimeString());
+        transaction.put("company", mSelectedTicket.getCompanyName());
 
         FirebaseFirestore.getInstance().collection("transactions").document()
                 .set(transaction, SetOptions.merge())

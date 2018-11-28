@@ -36,7 +36,7 @@ public class SignupActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_signup_alt);
 
         findViewById(R.id.signup_signup_btn).setOnClickListener(e->{
             registerUser();
@@ -58,7 +58,7 @@ public class SignupActivity extends Activity {
         String password = passwordTextView.getText().toString().trim();
         String userFirstName = nameTextView.getText().toString().trim();
         String userLastName = lastnameTextView.getText().toString().trim();
-        String userId = idTextView.getText().toString().trim();
+        String userId = "000";//idTextView.getText().toString().trim();
 
         if(isNameValid(userFirstName) && isLastNameValid(userLastName)
                 && isUserIdValid(userId) && isEmailValid(email)
@@ -154,11 +154,11 @@ public class SignupActivity extends Activity {
     }
 
     public boolean isUserIdValid(String id){
-        if(id.isEmpty()){
+        /*if(id.isEmpty()){
             idTextView.setError(getResources().getString(R.string.required_field_error_msg));
             idTextView.requestFocus();
             return false;
-        }
+        }*/
         return true;
     }
 
